@@ -1,12 +1,35 @@
 package it.polito.tdp.poweroutages.model;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Nerc {
 	private int id;
 	private String value;
+	private List <Nerc> donazioni;
+	private boolean occupato;
 
 	public Nerc(int id, String value) {
 		this.id = id;
 		this.value = value;
+		donazioni = new LinkedList<>();
+		occupato = false;
+	}
+
+	public List<Nerc> getDonazioni() {
+		return donazioni;
+	}
+
+	public void setDonazione(Nerc n) {
+		this.donazioni.add(n);
+	}
+
+	public boolean isOccupato() {
+		return occupato;
+	}
+
+	public void setOccupato(boolean occupato) {
+		this.occupato = occupato;
 	}
 
 	public int getId() {
