@@ -62,48 +62,53 @@ public class Simulazione {
 					}
 					if (vicini.size()==0 || c==0) {
 						catastrofi++;
+						System.out.println("CATASTROFE!!!!");
 						
 					}else {
 					
 						
 						
 					if (e.getN().getDonazioni().size()>=2) {
-						double min=0.0;
+						double min=200.0;
 						Nerc nm=null;
+						boolean trovato = false;
 						
 						for (Nerc n : e.getN().getDonazioni()) {
 							double peso = grafo.getEdgeWeight(grafo.getEdge(e.getN(), n));
 							if (peso<min && n.isOccupato()==false) {
 								min=c;
 								nm=n;
+								trovato=true;
 							}
-						
+					
 						}
-						/*if (!nm.equals(null)) {
+						if (trovato==true) {
 							 nm.setDonazione(e.getN());
 							 nm.setOccupato(true);
-							}*/
+							}
 						
 					}
 					
 					
 					
 					else if (e.getN().getDonazioni().isEmpty()){
-						double min=0.0;
+						double min=200.0;
 						Nerc nm=null;
+						boolean trovato = false;
 						for (Nerc n : Graphs.neighborListOf(grafo, e.getN())) {
 							double peso = grafo.getEdgeWeight(grafo.getEdge(e.getN(), n));
 							if (peso<min && n.isOccupato()==false) {
 								min=c;
 								nm=n;
+								trovato = true;
 							}
 							
 						
 						}
-						/*if (nm.getValue()==null) {
-						 nm.setDonazione(e.getN());
-						 nm.setOccupato(true);
-						}*/
+						if (trovato== true) {
+							 nm.setDonazione(e.getN());
+							 nm.setOccupato(true);
+							}
 					 }
 					
 					
@@ -112,6 +117,7 @@ public class Simulazione {
 						 Nerc n = e.getN().getDonazioni().get(0);
 						 if (n.isOccupato()==true){
 							 catastrofi++;
+							 System.out.println("CATASTROFE!!!!");
 							 
 						 }
 

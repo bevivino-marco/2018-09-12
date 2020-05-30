@@ -70,10 +70,12 @@ public class PowerOutagesDAO {
 	}
 	
 	public double getPeso (Nerc n1 , Nerc n2) {
-		String sql = "SELECT DISTINCT  MONTH(p1.date_event_began) " + 
-				"FROM poweroutages p1, poweroutages p2 " + 
-				"WHERE p1.nerc_id!=p2.nerc_id AND p1.nerc_id=? AND p2.nerc_id=? " + 
-				"AND MONTH(p1.date_event_began)=MONTH(p2.date_event_began)";
+		String sql = "SELECT COUNT(*) " + 
+				"FROM poweroutages p1, poweroutages p2  " + 
+				"WHERE p1.nerc_id!=p2.nerc_id AND p1.nerc_id=? AND p2.nerc_id=?  " + 
+				"AND MONTH(p1.date_event_began)=MONTH(p2.date_event_began) " + 
+				"AND YEAR(p1.date_event_began)=YEAR(p2.date_event_began) " + 
+				"GROUP BY MONTH(p1.date_event_began),YEAR(p1.date_event_began)";
 		double cont =0.0;
 
 		try {

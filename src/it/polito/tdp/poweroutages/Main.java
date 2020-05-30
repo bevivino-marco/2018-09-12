@@ -14,6 +14,7 @@ public class Main extends Application {
 		try {	
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("PowerOutages.fxml"));
 			BorderPane root = (BorderPane) loader.load();
+			
 			PowerOutagesController controller = loader.getController();
 
 			Model model = new Model();
